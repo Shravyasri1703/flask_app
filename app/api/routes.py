@@ -4,10 +4,10 @@ from ariadne.explorer import ExplorerGraphiQL
 
 from app.api.schema import create_schema
 
-# Create GraphQL schema
+# GraphQL schema
 schema = create_schema()
 
-# Create Explorer instance
+# Explorer instance
 explorer_html = ExplorerGraphiQL(
     title="GraphQL API Explorer"
 ).html(None)
@@ -19,12 +19,10 @@ def init_app(app):
     # GraphQL endpoint
     @app.route("/graphql", methods=["GET"])
     def graphql_explorer():
-        # Serve GraphiQL explorer on GET request
         return explorer_html
     
     @app.route("/graphql", methods=["POST"])
     def graphql_server():
-        # Process GraphQL queries on POST request
         data = request.get_json()
         success, result = graphql_sync(
             schema,

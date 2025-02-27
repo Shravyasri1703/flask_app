@@ -10,11 +10,11 @@ def load_schema():
     """Load GraphQL schema from a .graphql file or create it programmatically"""
     schema_path = Path(__file__).parent / "schema.graphql"
     
-    # If schema file exists, load from file
+    
     if schema_path.exists():
         return load_schema_from_path(str(schema_path))
     
-    # Otherwise, define schema programmatically
+    
     return """
     type User {
         id: ID!
