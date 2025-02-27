@@ -1,0 +1,34 @@
+type User {
+    id: ID!
+    username: String!
+    email: String!
+}
+
+type AuthPayload {
+    success: Boolean!
+    message: String
+    user: User
+    accessToken: String
+    refreshToken: String
+}
+
+type TokenPayload {
+    success: Boolean
+    message: String
+}
+
+type LogoutPayload {
+    success: Boolean!
+    message: String
+}
+
+type Query {
+    me : User
+}
+
+type Mutation {
+    register(username: String!, email: String!, password: String!): AuthPayload!
+    login(email: String!, password: String!): AuthPayload!
+    refreshToken: TokenPayload!
+    logout: LogoutPayload!
+}
